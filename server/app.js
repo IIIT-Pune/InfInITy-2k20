@@ -54,6 +54,7 @@ mongoose.connect(
 );
 
 app.use('/feedback', require('./routes/postFeedback'));
+app.use('/api/livestats',require('./routes/livestats'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
