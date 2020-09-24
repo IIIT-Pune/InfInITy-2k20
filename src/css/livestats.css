@@ -1,11 +1,11 @@
 #hero {
   width: 100%;
-  position: relative;
+  position: fixed;
 }
 
 #hero:before {
   content: "";
-  background: rgba(2, 5, 161, 0.91);
+  background:#060830;
   position: absolute;
   bottom: 0;
   top: 0;
@@ -124,4 +124,18 @@
   100% {
     transform: translate(85px, 0%);
   }
+}
+.table-live{
+   background-image: url("https://vignette3.wikia.nocookie.net/breakingbad/images/5/50/Wiki-background/revision/latest?cb=20170411111858");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position-x: center;
+  background-position-y: top;
+  margin:0 ;
+  
+    
+}
+.table-all{
+  padding: 10%;
+  position: relative;
 }

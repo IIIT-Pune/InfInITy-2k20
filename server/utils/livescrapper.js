@@ -4,7 +4,7 @@ var scrappper= async () => {
   try{
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  await page.goto("https://www.codechef.com/rankings/SEPT20B");
+  await page.goto("https://www.codechef.com/rankings/INFY2019");
   const stats = await page.evaluate(() => {
         var list=[]; 
         var res = Array.from(document.querySelectorAll(".dataTable tr"));

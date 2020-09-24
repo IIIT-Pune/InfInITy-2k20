@@ -33,7 +33,7 @@ var livestatsupdate=()=>{
               if (obj.success) {
                 sta.success = true;
                 sta.list = obj.stats;
-                sta.save().then((res) => console.log(res));
+                sta.save();
               }
       })
     })
