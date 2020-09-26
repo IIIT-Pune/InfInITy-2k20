@@ -15,7 +15,7 @@ import "aos/dist/aos.css";
 import { green, red } from "@material-ui/core/colors";
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: "#060830",
+    backgroundColor: "#000",
     color: theme.palette.common.white,
   },
   body: {

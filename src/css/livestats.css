@@ -5,7 +5,7 @@
 
 #hero:before {
   content: "";
-  background:#060830;
+  background:#000;
   position: absolute;
   bottom: 0;
   top: 0;
@@ -126,7 +126,7 @@
   }
 }
 .table-live{
-background: linear-gradient(to bottom, #94c5f8 1%,#a6e6ff 70%,#b1b5ea 100%); 
+background: #ffffff; 
   margin:0px ;
   
 }
@@ -145,4 +145,7 @@ background: linear-gradient(to bottom, #94c5f8 1%,#a6e6ff 70%,#b1b5ea 100%);
   width: 90%;
   margin-left: 5%;
   margin-top: 5%;
+  box-shadow: 0 10px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: 2px solid;
+  margin-bottom: 5%;
 }
