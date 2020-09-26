@@ -9,7 +9,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import "../css/livestats.css";
+import "../assets/scss/livestats.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { green, red } from "@material-ui/core/colors";
@@ -35,13 +35,12 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-
-
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
-  },root: {
-    width: '100%',
+  },
+  root: {
+    width: "100%",
   },
   container: {
     maxHeight: 440,
@@ -62,15 +61,15 @@ class LiveStatsComponent extends React.Component {
     });
   }
   render() {
-     var starcolor = [
-       "#666666",
-       "#1E7D22",
-       "#3366CC",
-       "#684273",
-       "#FFBF00",
-       "#FF7F00",
-       "#D0011B",
-     ];
+    var starcolor = [
+      "#666666",
+      "#1E7D22",
+      "#3366CC",
+      "#684273",
+      "#FFBF00",
+      "#FF7F00",
+      "#D0011B",
+    ];
     const { classes } = this.props;
     if (this.state.data) {
       const head = this.state.data[0];
@@ -127,7 +126,7 @@ class LiveStatsComponent extends React.Component {
               <Paper className={classes.root}>
                 <TableContainer className={classes.container}>
                   <Table stickyHeader aria-label="sticky table">
-                    <TableHead >
+                    <TableHead>
                       <TableRow>
                         <StyledTableCell>{head[0]}</StyledTableCell>
                         <StyledTableCell align="left" style={{ minWidth: 170 }}>
