@@ -1,7 +1,7 @@
 nav {
   position: sticky;
   top: 0;
-  z-index: -1;
+  z-index: 10;
 }
 
 .navbar {
@@ -45,7 +45,7 @@ nav {
 
     img {
       position: absolute;
-      z-index: -1;
+      z-index: 11;
       width: 100%;
       top: 50%;
       left: 50%;
@@ -53,8 +53,9 @@ nav {
     }
 
     span {
+      position: relative;
       display: block;
-      z-index: 3;
+      z-index: 12;
     }
   }
 
