@@ -12,6 +12,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 18px;
   background-color: #f6f6f6;
+  height: 100vh;
+
+  &.footer {
+    padding: 20px;
+    color: #f6f6f6;
+    // height: 75px;
+    background-color: #000;
+  }
 }
 
 code {

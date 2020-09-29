@@ -1,0 +1,79 @@
+.home.cont {
+  position: relative;
+
+  section {
+    scroll-snap-align: start;
+    align-items: center;
+    justify-content: start;
+    text-align: center;
+    width: 100vw;
+
+    &.landing {
+      background-color: black;
+      background-image: url("../img/landing.png");
+      color: white;
+      height: minmax(100vh, max-content);
+      text-align: center;
+      padding: 5rem 0;
+      display: flex;
+      flex-direction: column;
+
+      .--typography {
+        width: 34vw;
+        margin-bottom: 3rem;
+      }
+
+      .--year {
+        width: 8vw;
+        margin-bottom: 3rem;
+      }
+
+      .--hosted {
+        display: block;
+        font-size: 1rem;
+        margin: 2rem 0;
+      }
+
+      .--codechefTypo {
+        width: 18vw;
+        margin-bottom: 0.75rem;
+      }
+
+      .--DateTypo {
+        width: 16vw;
+      }
+    }
+
+    &.about {
+      height: 100vh;
+      padding: 3rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .home.cont section.landing {
+    .--typography {
+      width: 80vw;
+      margin-bottom: 1.5rem;
+    }
+
+    .--year {
+      width: 25vw;
+      margin-bottom: 1rem;
+    }
+
+    .--hosted {
+      margin: 1rem 0;
+    }
+
+    .--codechefTypo {
+      width: 60vw;
+      margin-bottom: 0.7rem;
+    }
+
+    .--DateTypo {
+      width: 55vw;
+    }
+  }
+}

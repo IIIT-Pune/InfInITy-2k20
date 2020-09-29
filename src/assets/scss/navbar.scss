@@ -1,3 +1,9 @@
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
 .navbar {
   $navbg: #013277;
   $textc: #fff;
@@ -7,12 +13,9 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.31);
 
   padding: 0 2rem;
-  // padding-left: 3rem;
   margin: 0;
-  position: sticky;
   width: 100vw;
   height: auto;
-  top: 0;
 
   display: flex;
   justify-content: flex-end;
@@ -97,11 +100,17 @@
 }
 
 @media (max-width: 640px) {
+  nav {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+  }
+
   .navbar {
     padding: 0 1rem;
-    position: fixed;
-    bottom: 0;
-    top: auto;
+    // position: fixed;
+    // bottom: 0;
+    // top: auto;
     justify-content: space-around;
     box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.31);
 

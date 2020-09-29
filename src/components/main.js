@@ -1,16 +1,18 @@
-import React, { Component } from 'react';
-import Example from './feedbackModal';
-import LiveStats from './LiveStatsComponent';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import React, { Component } from "react";
+import Example from "./feedbackModal";
+import LiveStats from "./LiveStatsComponent";
+import Home from "./home";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 class Main extends Component {
   render() {
     return (
-      <div>
+      <>
         <Switch location={this.props.location}>
           <Route exact path="/livestats" component={() => <LiveStats />} />
           <Route exact path="/example" component={() => <Example />} />
+          <Route exact path="/" component={() => <Home />} />
         </Switch>
-      </div>
+      </>
     );
   }
 }
