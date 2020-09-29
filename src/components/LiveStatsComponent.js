@@ -187,7 +187,7 @@ class LiveStatsComponent extends React.Component {
                             <span
                               style={{
                                 fontSize: "9px",
-                                "font-style": "italic",
+                                fontStyle: "italic",
                               }}
                             >
                               {row[2].length > 30
