@@ -4,3 +4,9 @@
   color: #f6f6f6;
   background-color: #000;
 }
+
+@media (max-width: 640px) {
+  .footer {
+    margin-bottom: 3rem;
+  }
+}

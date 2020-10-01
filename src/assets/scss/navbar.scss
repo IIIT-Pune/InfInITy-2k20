@@ -47,6 +47,7 @@ nav {
     div {
       padding-left: 0.5rem;
       color: #c7c7c7;
+      white-space: nowrap;
     }
 
     &:not(.active):hover {
