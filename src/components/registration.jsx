@@ -1,75 +1,192 @@
-import React, { useState } from "react";
+import React, { Component } from 'react';
 
-const Registration = () => {
-  const [name, setName] = useState();
-  const [lastName, setLastname] = useState();
-  const [username, setUsername] = useState();
-  const [country, setCountry] = useState();
-  const [phone, setPhone] = useState();
-  const [org, setOrg] = useState();
-
-  return (
-    <div className="registration">
-      <div className="form-container">
-        <img
-          id="typography"
-          src={require("../assets/img/registration.png")}
-          alt=""
-        />
-        <span id="one">
-          Embark on the code cooking journey off in the far lands of CodeChef's
-          turf
-        </span>
-        <form action="">
-          <input
-            id="name"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="First Name"
-          />
-          <input
-            id="lastname"
-            type="text"
-            value={lastName}
-            onChange={(e) => setLastname(e.target.value)}
-            placeholder="Last Name"
-          />
-          <input
-            id="username"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="CodeChef Username"
-          />
-          <input
-            id="phone"
-            type="text"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            placeholder="Phone Number"
-          />
-          <input
-            id="country"
-            type="text"
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-            placeholder="Country"
-          />
-          <input
-            id="uni"
-            type="text"
-            value={org}
-            onChange={(e) => setOrg(e.target.value)}
-            placeholder="College/Organisation"
-          />
-          <button className="btn btn-primary" type="submit">
-            Register
-          </button>
-        </form>
-      </div>
-    </div>
-  );
+const validEmailRegex = RegExp(
+  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+);
+const validateForm = (errors) => {
+  let valid = true;
+  Object.values(errors).forEach((val) => val.length > 0 && (valid = false));
+  return valid;
 };
+
+class Registration extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      lastname: '',
+      username: '',
+      country: '',
+      email: '',
+      org: '',
+      errors: {
+        name: '',
+        lastname: '',
+        username: '',
+        country: '',
+        email: '',
+        org: '',
+      },
+    };
+  }
+  checklastdigit(val) {
+    var format = /^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/;
+    if (format.test(val)) return false;
+    if ((val >= '0' && val <= '9') || (val >= 'a' && val <= 'z')) return true;
+    else return false;
+  }
+  checkcodechefusername(value) {
+    var format = /^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/;
+    if (value.length < 4 || value.length > 14) return false;
+    if (value[0] !== value[0].toLowerCase()) return false;
+    if (!this.checklastdigit(value[0]) === false) return false;
+    for (var i = 0; i < value.length - 1; i++) {
+      if (value[i] === '_' && value[i + 1] === '_') return false;
+    }
+    return true;
+  }
+
+  handleChange = (event) => {
+    event.preventDefault();
+    const { name, value } = event.target;
+    let errors = this.state.errors;
+    switch (name) {
+      case 'name':
+        errors.name =
+          value.length < 3
+            ? 'First Name must be at least 3 characters long!'
+            : '';
+        break;
+      case 'lastname':
+        errors.lastname =
+          value.length < 4
+            ? 'Last Name must be at least 4 characters long!'
+            : '';
+        break;
+      case 'username':
+        errors.username = !this.checkcodechefusername(value)
+          ? 'Must start with a lowercase letter from (a-z) ,Must be between 4 to 14 characters long, Must end with a letter (a-z) or number (0-9), Must not contain a sequence of two or more underscores (_), Can contain lowercase letters from (a-z), digits or underscores! '
+          : '';
+        break;
+
+      case 'email':
+        errors.email = validEmailRegex.test(value) ? '' : 'Email is not valid!';
+        break;
+
+      case 'country':
+        errors.country =
+          value.length < 2 ? 'Country must be at least 4 characters long!' : '';
+        break;
+
+      case 'org':
+        errors.org =
+          value.length < 5
+            ? 'Organization must be at least 5 characters long!'
+            : '';
+        break;
+      default:
+        break;
+    }
+    this.setState({ errors, [name]: value });
+  };
+  handleSubmit = (event) => {
+    event.preventDefault();
+    if (validateForm(this.state.errors)) {
+      console.info('Valid Form');
+    } else {
+      console.error('Invalid Form');
+    }
+  };
+
+  render() {
+    const { errors } = this.state;
+    return (
+      <div className='registration'>
+        <div className='form-container'>
+          <img
+            id='typography'
+            src={require('../assets/img/registration.png')}
+            alt=''
+          />
+          <span id='one'>
+            Embark on the code cooking journey off in the far lands of
+            CodeChef's turf
+          </span>
+          <form action='' onSubmit={this.handleSubmit} noValidate>
+            <input
+              id='name'
+              name='name'
+              type='text'
+              placeholder='First Name'
+              onChange={this.handleChange}
+              noValidate
+            />
+            {errors.name.length > 0 && (
+              <span className='error'>{errors.name}</span>
+            )}
+            <input
+              id='lastname'
+              name='lastname'
+              type='text'
+              placeholder='Last Name'
+              onChange={this.handleChange}
+              noValidate
+            />
+            {errors.lastname.length > 0 && (
+              <span className='error'>{errors.lastname}</span>
+            )}
+            <input
+              id='username'
+              name='username'
+              type='text'
+              placeholder='CodeChef Username'
+              onChange={this.handleChange}
+              noValidate
+            />
+            {errors.username.length > 0 && (
+              <span className='error'>{errors.username}</span>
+            )}
+            <input
+              id='phone'
+              name='email'
+              type='text'
+              placeholder='Email'
+              onChange={this.handleChange}
+              noValidate
+            />
+            {errors.email.length > 0 && (
+              <span className='error'>{errors.email}</span>
+            )}
+            <input
+              id='country'
+              name='country'
+              type='text'
+              placeholder='Country'
+              onChange={this.handleChange}
+              noValidate
+            />
+            {errors.country.length > 0 && (
+              <span className='error'>{errors.country}</span>
+            )}
+            <input
+              id='uni'
+              name='org'
+              type='text'
+              placeholder='College/Organisation'
+              onChange={this.handleChange}
+              noValidate
+            />
+            {errors.org.length > 0 && (
+              <span className='error'>{errors.org}</span>
+            )}
+            <button className='btn btn-primary' type='submit'>
+              Register
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+}
 
 export default Registration;
