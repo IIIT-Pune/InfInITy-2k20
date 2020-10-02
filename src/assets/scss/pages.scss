@@ -1,5 +1,6 @@
-.home.cont {
+.home {
   position: relative;
+  overflow-x: hidden;
 
   section {
     scroll-snap-align: start;
@@ -23,16 +24,17 @@
       display: flex;
       flex-direction: column;
 
-      filter: sepia(30%);
+      filter: sepia(10%);
 
       .--typography {
-        width: 34vw;
+        max-width: 34vw;
         margin-bottom: 3rem;
         filter: sepia(30%);
       }
 
       .--year {
-        width: 8vw;
+        max-width: 8vw;
+
         margin-bottom: 3rem;
       }
 
@@ -43,13 +45,13 @@
       }
 
       .--codechefTypo {
-        width: 18vw;
+        max-width: 18vw;
         margin-bottom: 0.75rem;
         filter: sepia(30%);
       }
 
       .--DateTypo {
-        width: 16vw;
+        max-width: 16vw;
         filter: sepia(40%);
       }
     }
@@ -61,7 +63,6 @@
       overflow: hidden;
       background-image: url("../img/teddy.png");
       background-position: 0% 100%;
-      // background-attachment: fixed;
       background-size: auto;
       background-repeat: no-repeat;
 
@@ -90,15 +91,35 @@
   }
 }
 
-@media (max-width: 768px) {
-  .home.cont section.landing {
+@media (min-width: 1100px) {
+  .home section.landing {
     .--typography {
-      width: 80vw;
+      max-height: 12vh;
+    }
+
+    .--year {
+      max-height: 10vh;
+    }
+
+    .--codechefTypo {
+      max-height: 11vh;
+    }
+
+    .--DateTypo {
+      max-height: 9vh;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .home section.landing {
+    .--typography {
+      max-width: 60vw;
       margin-bottom: 1.5rem;
     }
 
     .--year {
-      width: 25vw;
+      max-width: 15vw;
       margin-bottom: 1rem;
     }
 
@@ -107,24 +128,87 @@
     }
 
     .--codechefTypo {
-      width: 60vw;
+      max-width: 30vw;
       margin-bottom: 0.7rem;
     }
 
     .--DateTypo {
-      width: 55vw;
+      max-width: 28vw;
     }
   }
 }
 
+@media (max-width: 500px) {
+  .home section.landing {
+    .--typography {
+      max-width: 80vw;
+      margin-bottom: 1.5rem;
+    }
+
+    .--year {
+      max-width: 25vw;
+      margin-bottom: 1rem;
+    }
+
+    .--hosted {
+      margin: 1rem 0;
+    }
+
+    .--codechefTypo {
+      max-width: 60vw;
+      margin-bottom: 0.7rem;
+    }
+
+    .--DateTypo {
+      max-width: 55vw;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .home section.about {
+    .content p {
+      width: 80%;
+      margin-left: auto;
+      margin-right: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .home section {
+    &.about {
+      background-size: 40%;
+      padding: 1.5rem;
+
+      #abt_h2 {
+        transform: none;
+        position: relative;
+        top: auto;
+        left: auto;
+      }
+
+      .content p {
+        width: 90%;
+        margin: 3.2rem 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
+
+//____________ Registration ____________
+
 .registration {
-  height: 97vh;
+  min-height: 97vh;
+  max-height: max-content;
   padding: 3rem;
   background-color: #9fb5cb;
   background-image: url("../img/rv.png");
   background-position: bottom right;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -135,7 +219,7 @@
     justify-content: center;
     align-items: center;
     padding: 3rem;
-    background: rgba(246, 246, 246, 0.75);
+    background: #e0e5eb;
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.25);
     border-radius: 39px;
     max-width: min-content;
@@ -149,7 +233,6 @@
         display: block;
         height: 1rem;
         margin: 3px;
-        // opacity: 20%;
       }
 
       input {
@@ -214,6 +297,11 @@
         }
       }
 
+      .error {
+        font-size: 0.7rem;
+        color: #e45151;
+      }
+
       .btn {
         margin-top: 10px;
         padding: 0.3rem;
@@ -223,14 +311,41 @@
         font-size: 1.2rem;
       }
 
-      #typography {
-        width: min-content;
-        margin-bottom: 1rem;
-      }
-
-      #one {
+      #text_one {
         text-align: left;
         color: rgb(95, 95, 95);
+      }
+    }
+
+    #reg_typography {
+      display: block;
+      max-width: min-content;
+      min-width: 80%;
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+
+@media (min-width: 451px) and(max-width: 840px) {
+  .registration {
+    background-size: 120% auto;
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .registration {
+    background-size: 110% auto;
+    padding: 2rem 1rem;
+    align-items: center;
+
+    .form-container {
+      padding: 1.75rem 1.5rem;
+      width: fit-content;
+      font-size: 0.9rem;
+
+      #reg_typography {
+        max-width: 80vw;
       }
     }
   }
