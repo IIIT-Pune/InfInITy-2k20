@@ -11,7 +11,7 @@ function ValidationMessage(props) {
   return null;
 }
 
-class Example extends Component {
+class FeedbackModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -80,7 +80,7 @@ class Example extends Component {
       <div>
         <>
           <Button
-            color='primary'
+            style={{ backgroundColor: '#32e0c4' }}
             type='button'
             onClick={() => this.setModalOpen(!this.state.modalOpen)}
           >
@@ -182,4 +182,4 @@ class Example extends Component {
   }
 }
 
-export default Example;
+export default FeedbackModal;
