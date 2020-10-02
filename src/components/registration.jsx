@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
+import { baseUrl } from '../shared/baseUrl';
 const validEmailRegex = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 );
@@ -30,16 +31,13 @@ class Registration extends Component {
     };
   }
   checklastdigit(val) {
-    var format = /^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/;
-    if (format.test(val)) return false;
     if ((val >= '0' && val <= '9') || (val >= 'a' && val <= 'z')) return true;
-    else return false;
+    return false;
   }
   checkcodechefusername(value) {
-    var format = /^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/;
     if (value.length < 4 || value.length > 14) return false;
     if (value[0] !== value[0].toLowerCase()) return false;
-    if (!this.checklastdigit(value[0]) === false) return false;
+    if (this.checklastdigit(value[value.length - 1]) === false) return false;
     for (var i = 0; i < value.length - 1; i++) {
       if (value[i] === '_' && value[i + 1] === '_') return false;
     }
@@ -64,9 +62,10 @@ class Registration extends Component {
             : '';
         break;
       case 'username':
-        errors.username = !this.checkcodechefusername(value)
-          ? 'Must start with a lowercase letter from (a-z) ,Must be between 4 to 14 characters long, Must end with a letter (a-z) or number (0-9), Must not contain a sequence of two or more underscores (_), Can contain lowercase letters from (a-z), digits or underscores! '
-          : '';
+        errors.username =
+          this.checkcodechefusername(value) === false
+            ? 'Must start with a lowercase letter from (a-z) ,Must be between 4 to 14 characters long, Must end with a letter (a-z) or number (0-9), Must not contain a sequence of two or more underscores (_), Can contain lowercase letters from (a-z), digits or underscores! '
+            : '';
         break;
 
       case 'email':
@@ -92,8 +91,20 @@ class Registration extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     if (validateForm(this.state.errors)) {
+      alert(
+        'Thank you for your valuable time . You have been successfully registered ! '
+      );
+      axios.post(baseUrl + 'registration', {
+        name: this.state.name,
+        lastname: this.state.lastname,
+        username: this.state.username,
+        country: this.state.country,
+        email: this.state.email,
+        org: this.state.org,
+      });
       console.info('Valid Form');
     } else {
+      alert('Please fill valid details !');
       console.error('Invalid Form');
     }
   };
