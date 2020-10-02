@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../assets/scss/pages.scss';
+import Footer from './footerComponent';
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -54,6 +55,7 @@ class Home extends Component {
             <h3>Team</h3>
           </div>
         </section>
+        <Footer />
       </div>
     );
   }
