@@ -60,9 +60,13 @@
   position: relative;
   padding-bottom: 12px;
 }
+.feedbackheading {
+  margin-left: 50px;
+}
 
 #footer .footer-top .footer-links {
   margin-bottom: 30px;
+  margin-left: 100px;
 }
 
 #footer .footer-top .footer-links ul {
@@ -98,7 +102,9 @@
 #footer .footer-top .footer-links ul a:hover {
   color: #4be8b0;
 }
-
+.footer-newsletter {
+  margin-left: 50px;
+}
 #footer .footer-top .footer-newsletter form {
   margin-top: 30px;
   background: #fff;

@@ -47,10 +47,7 @@ class Footer extends Component {
                   </div>
                 </div>
 
-                <div
-                  class='col-lg-3 col-md-6 footer-links'
-                  style={{ marginLeft: '100px' }}
-                >
+                <div class='col-lg-3 col-md-6 footer-links'>
                   <h4>Useful Links</h4>
                   <ul>
                     <li>
@@ -75,10 +72,14 @@ class Footer extends Component {
                   </ul>
                 </div>
 
-                <div class='col-lg-3 col-md-6 footer-newsletter'>
-                  <h4>Feedback</h4>
-                  <p>We would love to hear from you !</p>
-                  <FeedbackModal />
+                <div class='col-lg-3 col-md-6 footer-newsletter '>
+                  <h4 class='feedbackheading'>Feedback</h4>
+                  <p style={{ marginRight: '62px' }}>
+                    We would love to hear from you !
+                  </p>
+                  <p style={{ marginLeft: '20px' }}>
+                    <FeedbackModal />
+                  </p>
                 </div>
               </div>
             </div>
