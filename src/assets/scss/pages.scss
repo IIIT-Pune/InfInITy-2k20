@@ -297,6 +297,45 @@
         }
       }
 
+      .select {
+        display: grid;
+        grid-template-areas: "select";
+        align-items: center;
+
+        &::after {
+          content: "";
+          margin-right: 1rem;
+          grid-area: select;
+          justify-self: end;
+          width: 0.8em;
+          height: 0.5em;
+          z-index: 999;
+          background-color: rgb(155, 155, 155);
+          clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+        }
+
+        #country {
+          grid-area: select;
+
+          appearance: none;
+          -webkit-appearance: none;
+          background-color: #f6f6f6;
+          width: 100%;
+          padding: 0.4rem 1.5rem;
+          padding-left: 2.8rem;
+          border-radius: 99px;
+          border: #adadad91 solid 2px;
+          font-weight: 500;
+          color: #777777;
+          margin: 0.3rem 0;
+
+          background-image: url("../img/icon_globe.png");
+          background-position: 1.25rem center;
+          background-size: auto 1rem;
+          background-repeat: no-repeat;
+        }
+      }
+
       .error {
         font-size: 0.7rem;
         color: #e45151;
