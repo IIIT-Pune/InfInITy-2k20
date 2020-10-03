@@ -18,6 +18,7 @@ class Main extends Component {
             component={() => <Registration />}
           />
           <Route exact path='/' component={() => <Home />} />
+          <Redirect to='/'/>
         </Switch>
       </div>
     );
