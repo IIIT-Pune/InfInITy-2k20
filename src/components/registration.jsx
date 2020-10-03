@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {countries} from './countries';
 import { baseUrl } from '../shared/baseUrl';
 const validEmailRegex = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -31,7 +32,7 @@ class Registration extends Component {
     };
   }
   checklastdigit(val) {
-    if ((val >= '0' && val <= '9') || (val >= 'a' && val <= 'z')) return true;
+    if ((val >= "0" && val <= "9") || (val >= "a" && val <= "z")) return true;
     return false;
   }
   checkcodechefusername(value) {
@@ -166,16 +167,18 @@ class Registration extends Component {
               noValidate
             />
             {errors.email.length > 0 && (
-              <span className='error'>{errors.email}</span>
+              <span className="error">{errors.email}</span>
             )}
-            <input
-              id='country'
-              name='country'
-              type='text'
-              placeholder='Country'
-              onChange={this.handleChange}
-              noValidate
-            />
+            <div className="select">
+              <select name="country" id="country">
+                <option value="" selected disabled hidden>
+                  Select Country
+                </option>
+                {countries.map((country) => (
+                  <option key={country.code}>{country.name}</option>
+                ))}
+              </select>
+            </div>
             {errors.country.length > 0 && (
               <span className='error'>{errors.country}</span>
             )}

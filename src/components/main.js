@@ -22,7 +22,6 @@ class Main extends Component {
           />
           <Route exact path='/example' component={() => <FeedbackModal />} />
           <Route exact path='/' component={() => <Home />} />
-          <Route exact path='/previously' component={() => <Previously />} />
           <Route exact path='/quescard' component={() => <QuesCard />} />
         </Switch>
       </div>
